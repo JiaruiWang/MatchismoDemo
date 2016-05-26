@@ -21,6 +21,27 @@
       score = 1;
     }
   }
+  
+  if ([otherCards count] == 2) {
+    PlayingCard *other1 = [otherCards firstObject];
+    PlayingCard *other2 = [otherCards lastObject];
+    if ([self.suit isEqualToString:other1.suit] &&
+        [self.suit isEqualToString:other2.suit]) {
+      score = 4;
+    } else if (self.rank == other1.rank &&
+               self.rank == other2.rank) {
+      score = 16;
+    } else if (self.rank == other1.rank ||
+               self.rank == other2.rank ||
+               other1.rank == other2.rank){
+      score = 4;
+    } else if ([self.suit isEqualToString:other1.suit] ||
+               [self.suit isEqualToString:other2.suit] ||
+               [other1.suit isEqualToString:other2.suit]) {
+      score = 1;
+    }
+    
+  }
   return score;
 }
 
